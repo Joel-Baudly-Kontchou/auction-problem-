@@ -13,7 +13,7 @@ public class Auction
     private ArrayList<Lot> listOfLots;
     // The number that will be given to the next lot entered into this auction.
     private int nextLotNumber;
-
+    
     /**
      * Create a new auction.
      */
@@ -79,6 +79,12 @@ public class Auction
      */
     public Lot getLot(int lotNumber)
     {
+        for (Lot aLot : listOfLots){
+            if (aLot.getNumber()==lotNumber){
+                return aLot;
+            }
+        }
+        return null;
         if((lotNumber >= 1) && (lotNumber < nextLotNumber)) {
             // The number seems to be reasonable.
             Lot selectedLot = listOfLots.get(lotNumber - 1);
@@ -114,7 +120,7 @@ public class Auction
         }
     }
     
-    // question 4
+    // question 4 (originally 5)
     public ArrayList<Lot> getUnsold(){
         ArrayList<Lot> unsold = new ArrayList<>();
         for (Lot aLot : listOfLots){
@@ -124,6 +130,6 @@ public class Auction
             }
         }
         return unsold;
-    }
+    } 
 }
 
